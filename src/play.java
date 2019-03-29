@@ -93,13 +93,13 @@ public class play{
 				System.out.println(options);
 				
 				int userOption = 0;
+				String userOptionString = "";
 				//checks if user input is valid
 				try {
-					
-					userOption = in.nextInt();
+					userOptionString = in.nextLine();
+					userOption = Integer.parseInt(userOptionString);
 				}catch (NumberFormatException e){
 					valid = false;
-					System.out.println("Invalid response. Try again.");
 				}
 				//checks through options
 				switch (userOption) {
@@ -165,7 +165,7 @@ public class play{
 			System.out.println("You lost " + user.getBet() + " " + word + ".");
 			user.setChips(user.getChips() - user.getBet());
 			user.setBet(0);
-			if(user.getChips() < 2) {
+			if(user.getChips() < 2 && user.getChips() > 0) {
 				word = "chip";
 			}
 			else {
@@ -272,7 +272,6 @@ public class play{
 	}
 	
 	public boolean endgame() {
-		in.nextLine();
 		boolean valid = true;
 		do {
 			System.out.println("Play again? (Y/N)");
